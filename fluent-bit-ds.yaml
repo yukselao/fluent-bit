@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: fluent-bit
-        image: fluent/fluent-bit:1.6
+        image: fluent/fluent-bit:1.6.10
         imagePullPolicy: Always
         ports:
           - containerPort: 2020
@@ -50,7 +50,7 @@ spec:
           path: /var/log
       - name: varlibdockercontainers
         hostPath:
-          path: /var/lib/containerd/io.containerd.grpc.v1.cri/containers
+          path: /var/lib/docker/containers
       - name: systemdlog
         hostPath:
           path: /run/log          
