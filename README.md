@@ -1,1 +1,1 @@
-# fluent-bit
+# fluent-bit application log integration test project
