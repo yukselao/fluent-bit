@@ -27,7 +27,7 @@ data:
         Name              tail
         Tag               kube.*
         Path              /var/log/containers/*.log
-        Parser            docker
+        Parser            cri
         DB                /var/log/flb_kube.db
         Mem_Buf_Limit     5MB
         Skip_Long_Lines   On
@@ -60,6 +60,13 @@ data:
         syslog_message_key   message
  
   parsers.conf: |
+    [PARSER]
+        Name cri
+        Format regex
+        Regex ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<message>.*)$
+        Time_Key    time
+        Time_Format %Y-%m-%dT%H:%M:%S.%L%z 
+
     [PARSER]
         Name   apache
         Format regex
